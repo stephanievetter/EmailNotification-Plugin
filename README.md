@@ -24,8 +24,8 @@ Send Documents for review before submitting
 #License
 
 #Acknowledgments
-FlowJo Application Scientists
-FlowJo Engineers
+FlowJo Application Scientists<br \>
+FlowJo Engineers<br \>
 FlowJo Team Intern
 
 #Email Notification Plugin Documentation
