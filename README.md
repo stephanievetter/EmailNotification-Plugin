@@ -22,3 +22,11 @@ FlowJo Version 10.1.7 is required to run the Email Notification plugin.
 Send Documents for review before submitting
 
 #License
+
+#Acknowledgments
+FlowJo Application Scientists
+FlowJo Engineers
+FlowJo Team Intern
+
+#Email Notification Plugin Documentation
+https://flowjo-stephanied.gitbooks.io/email-notification-flowjo-plugin/content/
