@@ -32,8 +32,8 @@ public class AddRemoveGUI {
 	private JTable recipList;
 	private DefaultTableModel defTable;
 	private JScrollPane scrollPane;
-	private JTextArea nameErr;					 //invalid recip name error message
-	private JTextArea emailErr;					 //invalid recip email error message
+	private JTextArea nameErr;	//invalid recip name error message
+	private JTextArea emailErr;	//invalid recip email error message
 	private EmailNotification emailNotification; //workspace plugin instance
 
 	/**
@@ -195,6 +195,8 @@ public class AddRemoveGUI {
 				{
 					Recipient recip = new Recipient(recip_name.getText(), recip_email.getText());
 					emailNotification.addRecipient(recip);
+					recip_name.setText(null);
+					recip_email.setText(null);
 					DisplayRecips();
 				}
 			}
