@@ -37,7 +37,7 @@ public class AddRemoveGUI {
 	private EmailNotification emailNotification; //workspace plugin instance
 
 	/**
-	 * Create an instance of the Add/Remove GUI to add and/or
+	 * Creates an instance of the Add/Remove GUI to add and/or
 	 * remove recipients from the email notification recipient list
 	 * <p>
 	 * The constructor calls the method to display the GUI
@@ -195,8 +195,8 @@ public class AddRemoveGUI {
 				{
 					Recipient recip = new Recipient(recip_name.getText(), recip_email.getText());
 					emailNotification.addRecipient(recip);
-					recip_name.setText(null);
-					recip_email.setText(null);
+					recip_name.setText("");
+					recip_email.setText("");
 					DisplayRecips();
 				}
 			}

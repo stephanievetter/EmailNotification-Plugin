@@ -43,7 +43,7 @@ public class SendErrorGUI {
 		dialog = new JDialog(null, Dialog.DEFAULT_MODALITY_TYPE);
 		dialog.getContentPane().setBackground(UIManager.getColor("Button.background"));
 		dialog.setTitle("Send Error");
-		dialog.setSize(380, 280);
+		dialog.setSize(485, 321);
 		dialog.getContentPane().setLayout(null);
 		
 		//notification of error and description of exception
@@ -54,7 +54,7 @@ public class SendErrorGUI {
 		
 		errDescrip = new JTextArea();
 		errDescrip.setBackground(UIManager.getColor("Button.background"));
-		errDescrip.setBounds(39, 60, 283, 98);
+		errDescrip.setBounds(39, 60, 409, 149);
 		dialog.getContentPane().add(errDescrip);
 		errDescrip.setColumns(10);
 		errDescrip.setText(err);
@@ -69,7 +69,7 @@ public class SendErrorGUI {
 				dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		btnResend.setBounds(60, 174, 115, 29);
+		btnResend.setBounds(218, 225, 115, 29);
 		dialog.getContentPane().add(btnResend);
 		
 		//button to cancel send request and exit plugin
@@ -79,7 +79,7 @@ public class SendErrorGUI {
 				dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING));
 			}
 		});
-		btnNewButton.setBounds(190, 174, 115, 29);
+		btnNewButton.setBounds(343, 225, 115, 29);
 		dialog.getContentPane().add(btnNewButton);
 		
 		dialog.setVisible(true);
