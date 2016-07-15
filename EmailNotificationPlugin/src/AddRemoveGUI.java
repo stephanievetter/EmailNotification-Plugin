@@ -51,13 +51,13 @@ public class AddRemoveGUI {
 		recipList = new JTable();
 		defTable = new DefaultTableModel();
 
-		ShowAddRemoveGUI();
+		showAddRemoveGUI();
 	}
 	/**
 	 * Creates GUI components (labels, textboxes, buttons) and calls 
 	 * methods necessary to build and display Add/Remove GUI.
 	 */
-	public void ShowAddRemoveGUI()
+	public void showAddRemoveGUI()
 	{ 			
 		//GUI window
 		dialog = new JDialog(null, Dialog.DEFAULT_MODALITY_TYPE);
@@ -75,9 +75,9 @@ public class AddRemoveGUI {
 		btnNewButton.setBounds(264, 381, 115, 29);
 		dialog.getContentPane().add(btnNewButton);
 
-		DisplayRecips();
-		AddRecip();
-		RemoveRecip();
+		displayRecips();
+		addRecip();
+		removeRecip();
 
 		//Error message if email address not in correct format
 		emailErr = new JTextArea();
@@ -105,7 +105,7 @@ public class AddRemoveGUI {
 	 * Display email notification recipients in an immutable table with ability
 	 * to select one entry at a time
 	 */
-	public void DisplayRecips()
+	public void displayRecips()
 	{
 		//get list of recipients from plugin instance
 		ArrayList<Recipient> recips = emailNotification.getRecipientList();
@@ -144,7 +144,7 @@ public class AddRemoveGUI {
 	 * email address must be entered to add recipient to list. The method
 	 * doesn't check for duplicate entries.
 	 */
-	public void AddRecip()
+	public void addRecip()
 	{
 		//section to add recipient to notification list
 		JLabel lblAddRecipient = new JLabel("Add Recipient");
@@ -197,7 +197,7 @@ public class AddRemoveGUI {
 					emailNotification.addRecipient(recip);
 					recip_name.setText("");
 					recip_email.setText("");
-					DisplayRecips();
+					displayRecips();
 				}
 			}
 		});
@@ -208,7 +208,7 @@ public class AddRemoveGUI {
 	 * Remove a selected recipient from email recipient list. Only one 
 	 * recipient may be selected and removed at a time. 
 	 */
-	public void RemoveRecip()
+	public void removeRecip()
 	{
 		//Section to remove a recipient from notification list
 		JLabel lblRemoveRecipient = new JLabel("Remove Recipient");
@@ -228,7 +228,7 @@ public class AddRemoveGUI {
 							(recipList.getValueAt(deleteIndex, 0).toString(), 
 									recipList.getValueAt(deleteIndex, 1).toString()));
 
-					DisplayRecips();
+					displayRecips();
 				}
 			}
 		});

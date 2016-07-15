@@ -1,7 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
 
-//import com.treestar.flowjo.engine.EngineManager;
 import com.treestar.lib.PluginHelper;
 import com.treestar.lib.application.ApplicationInfo;
 import com.treestar.lib.core.WorkspacePluginInterface;
@@ -57,7 +56,7 @@ public class EmailNotification implements WorkspacePluginInterface
 		{
 			gui = new SettingsGUI(this);	
 			initializeGUI();
-			gui.ShowGUI();
+			gui.showGUI();
 		}
 	}
 	/**
@@ -116,9 +115,6 @@ public class EmailNotification implements WorkspacePluginInterface
 		//create file to save plugin pref settings
 		File prefsFile = new File(HomeEnv.getInstance().getUserPrefsFolder(), xml_filename + FileTypes.XML_SUFFIX);
 		
-		//File prefsFile = new File(EngineManager.getInstance().getPrefsFile().getParentFile(), xml_filename + FileTypes.XML_SUFFIX);
-		//System.out.println(prefsFile.getAbsolutePath());
-		
 		//write plugin preferences SElement to XML file
 		SElement out = getElement();
 		new XMLUtil().write(out, prefsFile);
@@ -139,9 +135,6 @@ public class EmailNotification implements WorkspacePluginInterface
 	{
 		//look for prefs.xml file in prefs folder
 		File prefsFile = new File(HomeEnv.getInstance().getUserPrefsFolder(), xml_filename + FileTypes.XML_SUFFIX);
-
-		//File prefsFile = new File(EngineManager.getInstance().getPrefsFile().getParentFile(), xml_filename + FileTypes.XML_SUFFIX);
-		//System.out.println(prefsFile.getAbsolutePath());
 		
 		//read the prefs file if it exists
 		if(prefsFile.exists())
@@ -257,7 +250,7 @@ public class EmailNotification implements WorkspacePluginInterface
 		{
 			SendEmail send = new SendEmail(this, sender_email, sender_password, 
 					recip_list, personal_message);
-			send.Send();
+			send.send();
 		}
 	}
 	/**

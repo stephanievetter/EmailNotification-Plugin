@@ -33,7 +33,7 @@ public class SettingsGUI {
 	private JTextField sender_email = new JTextField();
 	private JPasswordField sender_password = new JPasswordField();
 	private JTextArea messageBox = new JTextArea();
-	private JCheckBox cc_checkbox;
+	private JCheckBox cc_checkbox = new JCheckBox("Cc to sender");
 	private JTable recipList;
 	private JScrollPane scrollPane;
 	private DefaultTableModel defTable;
@@ -59,7 +59,7 @@ public class SettingsGUI {
 	 * Creates GUI components (labels, textboxes, buttons) and calls 
 	 * methods necessary to build and display Settings GUI.
 	 */
-	public void ShowGUI(){ 			
+	public void showGUI(){ 			
 		//GUI window
 		dialog = new JDialog(null, Dialog.DEFAULT_MODALITY_TYPE);
 		dialog.setTitle("Email Notification Settings");
@@ -84,7 +84,7 @@ public class SettingsGUI {
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//if sender valid, call method to send email, then close window
-				if(ValidateSender())
+				if(validateSender())
 				{
 					emailNotification.writeSettings();
 					emailNotification.sendEmail();
@@ -111,7 +111,7 @@ public class SettingsGUI {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//if sender valid, save settings to prefs file, then close window 
-				if(ValidateSender())
+				if(validateSender())
 				{
 					emailNotification.writeSettings();
 					dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING));
@@ -127,14 +127,14 @@ public class SettingsGUI {
 			public void actionPerformed(ActionEvent e) {
 				new AddRemoveGUI(emailNotification);
 
-				DisplayRecipients();
+				displayRecipients();
 			}
 		});
 		btnAddremove.setBounds(277, 405, 126, 29);
 		dialog.getContentPane().add(btnAddremove);
 
-		Sender();
-		DisplayRecipients();
+		sender();
+		displayRecipients();
 		
 		//error message for empty sender name field
 		nameErr = new JTextArea();
@@ -174,7 +174,7 @@ public class SettingsGUI {
 	/**
 	 * Creates components of Settings GUI for sender section
 	 */
-	public void Sender()
+	public void sender()
 	{
 		//section to enter sender's name
 		JLabel lblSenderName = new JLabel("Sender Name:");
@@ -213,16 +213,15 @@ public class SettingsGUI {
 		sender_password.setText(getSender_password());
 
 		//check box to add sender to email list
-		cc_checkbox = new JCheckBox("Cc to sender");
 		cc_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//add sender to recipient list if valid and checked
-				if(cc_checkbox.isSelected() && ValidateSender())
+				if(cc_checkbox.isSelected() && validateSender())
 				{
 					emailNotification.addRecipient(new Recipient(getSender_name(), 
 							getSender_email()));
 					
-					DisplayRecipients();
+					displayRecipients();
 				}
 				//remove sender from recipient list
 				//if sender removed from Add/Remove gui, checkbox does not auto-update
@@ -231,7 +230,7 @@ public class SettingsGUI {
 					emailNotification.removeRecipient(new Recipient(getSender_name(), 
 							getSender_email()));
 					
-					DisplayRecipients();
+					displayRecipients();
 				}
 			}});
 		cc_checkbox.setBounds(146, 171, 139, 29);
@@ -240,7 +239,7 @@ public class SettingsGUI {
 	/**
 	 * Display email notification recipients in an immutable table
 	 */
-	public void DisplayRecipients()
+	public void displayRecipients()
 	{
 		//get list from plugin instance
 		ArrayList<Recipient> recips = emailNotification.getRecipientList();
@@ -289,7 +288,7 @@ public class SettingsGUI {
 	 *
 	 * @return  boolean value indicating if sender information is valid
 	 */
-	public boolean ValidateSender()
+	public boolean validateSender()
 	{
 		//regular expression to check for valid email address
 		String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";		
@@ -383,13 +382,4 @@ public class SettingsGUI {
 	{
 		this.messageBox.setText(message);
 	}
-//	/**
-//	 * Sets selected boolean for checkbox to false
-//	 *
-//	 * @return	This method doesn't return a value, but upon completion, 
-//	 * 			checkbox will be unchecked
-//	 */
-//	public void uncheckCc_checkbox() {
-//		cc_checkbox.setSelected(false);
-//	}
 }
