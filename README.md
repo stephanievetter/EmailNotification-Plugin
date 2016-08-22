@@ -7,7 +7,7 @@ FlowJo client.
 When running the plugin in FlowJo client, a Settings window appears that allows the user to modify the plugin settings. The plugin settings are saved in a preference file in the FlowJo 10 prefs folder. Currently, the plugin doesn't run on FlowJo Server but future development would include adding headless functionality.
 
 #Dependencies
-FlowJo Version 10.1.7 is required to run the Email Notification plugin.
+FlowJo Version 10.1.7 is required to run the Email Notification plugin.<BR>
 JavaMail API release 1.5.5. may be downloaded from https://java.net/projects/javamail/pages/Home.
 
 #Installation Instructions
