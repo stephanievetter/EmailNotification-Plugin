@@ -1,4 +1,4 @@
-# Email Notification FlowJo Plugin
+# Email Notification Plugin
 
 #Description
 The Email Notification plugin sends auto generated email notifications to specified recipients when a FlowJo workspace is saved in the 
