@@ -130,12 +130,14 @@ public class SettingsGUI {
 				new AddRemoveGUI(emailNotification);
 
 				displayRecipients();
+				setCheckbox();
 			}
 		});
 		btnAddremove.setBounds(277, 405, 126, 29);
 		dialog.getContentPane().add(btnAddremove);
 
 		sender();
+		setCheckbox();
 		displayRecipients();
 		
 		//error message for empty sender name field
@@ -383,5 +385,32 @@ public class SettingsGUI {
 	public void setMessagebox(String message)
 	{
 		this.messageBox.setText(message);
+	}
+	/**
+	 * Updates "cc to sender" checkbox if sender is added or removed 
+	 * from recipient list
+	 */
+	public void setCheckbox()
+	{
+		ArrayList<Recipient> recips = emailNotification.getRecipientList();
+		boolean found = false;
+
+		//look for sender in recipient list
+		for(int i = 0; i < recips.size(); i++)
+		{
+			if(recips.get(i).getToEmailAddress().equals(getSender_email()) && 
+					recips.get(i).getToName().equals(getSender_name()))
+			{
+				found = true;
+			}	
+		}
+		
+		//uncheck "cc to sender" checkbox if sender removed from list
+		if(found == false)
+			cc_checkbox.setSelected(false);
+		//check "cc to sender" checkbox if sender is in list
+		else if(found == true)
+			cc_checkbox.setSelected(true);
+		
 	}
 }

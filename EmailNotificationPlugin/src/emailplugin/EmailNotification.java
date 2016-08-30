@@ -32,10 +32,6 @@ public class EmailNotification implements WorkspacePluginInterface
 	private ArrayList<Recipient> recip_list = new ArrayList<Recipient>();
 	private String xml_filename = "EmailNotificationPrefs";	//name of prefs file for plugin
 
-	public EmailNotification()
-	{
-		save(workspace);
-	}
 	/**
 	 * Method called when FlowJo workspace is saved. 
 	 * <p>
