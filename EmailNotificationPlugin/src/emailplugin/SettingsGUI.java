@@ -396,7 +396,7 @@ public class SettingsGUI {
 		boolean found = false;
 
 		//look for sender in recipient list
-		for(int i = 0; i < recips.size(); i++)
+		for(int i = 0; i < recips.size() && found == false; i++)
 		{
 			if(recips.get(i).getToEmailAddress().equals(getSender_email()) && 
 					recips.get(i).getToName().equals(getSender_name()))
