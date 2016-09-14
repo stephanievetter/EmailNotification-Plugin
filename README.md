@@ -35,3 +35,6 @@ You may read the full licensing information [here](https://www.apache.org/licens
 
 #Email Notification Plugin Documentation
 https://flowjo-stephanied.gitbooks.io/email-notification-flowjo-plugin/content/
+
+#FlowJo Exchange
+http://exchange.flowjo.com/
